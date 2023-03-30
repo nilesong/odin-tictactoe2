@@ -18,12 +18,15 @@ let player = gameBoard.playerOne;
 const displayController = (() => {
     const displayArrayToGrid = () => {
         const board = gameBoard.board;
+        const boardDiv = document.createElement('div');
+        boardDiv.className = 'boardDiv';
         for (let i = 0; i < 9; i++) {
             const array1 = document.createElement('div');
             array1.textContent = board[i];
             array1.className = 'gameDiv';
-            mainDiv.appendChild(array1);
+            boardDiv.appendChild(array1);
         }
+        mainDiv.appendChild(boardDiv)
         boxEventListener();
     }
     return { displayArrayToGrid };
@@ -118,15 +121,52 @@ function winCheck() {
     else {
         return;
     }
+    winDiv.appendChild(resetButton);
 }
 
+function gameReset() {
+    const boardDiv = document.querySelector('.boardDiv');
+    boardDiv.remove();
+    reset.arrayReset();
+    reset.boardReset();
+    reset.playerReset();
+    reset.winnerReset();
+    displayController.displayArrayToGrid();
+    resetButton.remove();
+}
+
+const reset = (() => {
+    const arrayReset = () => {
+        gameBoard.board = ['', '', '', '', '', '', '', '', ''];
+    }
+    const boardReset = () => {
+        gameDiv.forEach((div) => {
+            div.textContent = '';
+        })
+    }
+    const playerReset = () => {
+        player = gameBoard.playerOne;
+        playerDisplay.textContent = player;
+    }
+    const winnerReset = () => {
+        winnerDisplay.textContent = '';
+    }
+    return { arrayReset, boardReset, playerReset, winnerReset };
+})()
+
+//Start button
 const startButton = document.querySelector('.startButton');
 startButton.addEventListener('click', function () {
     displayController.displayArrayToGrid();
     startButton.remove();
 })
 
+//Reset button
+const resetButton = document.createElement('button');
+resetButton.textContent = 'RESET GAME'
+resetButton.addEventListener('click', gameReset)
+
+
 // Functions to add
-// 1. Reset reset button
-// 2. CSS
-// 3. AI opponent
+// 1. CSS
+// 2. AI opponent
