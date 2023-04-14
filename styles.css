@@ -1,11 +1,91 @@
-.boardDiv {
+* {
+    background-color: #9DB4C0;
+}
+
+body {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
+    justify-content: center;
+    justify-items: center;
+    align-content: center;
+}
+
+h1 {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: bolder;
+    font-size: xx-large
+}
+
+p {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: bold;
+    font-size: larger;
+}
+
+span {
+    color: maroon;
+}
+
+h1,
+p,
+button,
+span {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+button {
+    background-color: #5C6B73;
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: bold;
+    font-size: large;
+    border-radius: 20px;
+    width: 200px;
+    height: 50px;
+}
+
+.boardDiv {
+    background-color: #E0FBFC;
+    display: grid;
+    border: solid black;
+    width: 500px;
+    height: 500px;
+    grid-template-columns: 120px 120px 120px;
+    grid-template-rows: 120px 120px 120px;
+    justify-content: center;
+    align-content: center;
 }
 
 .boardDiv>div {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 120px;
+    font-weight: bold;
     border: solid black;
-    width: 30px;
-    height: 30px;
+    width: 114px;
+    height: 114px;
+}
+
+.gameDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.winDiv {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    justify-content: center;
+}
+
+.winDiv>div {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: bold;
+    font-size: larger;
+    color: green;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
